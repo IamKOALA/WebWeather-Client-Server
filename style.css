@@ -39,7 +39,7 @@
     margin-left: 1vw;
     border: none;
     width: 26.5vw;
-    height: 2.3vw;
+    height: 3vw;
     background: lightgray;
     border-radius: 8.5px;
     font-size: 1vw;
@@ -50,15 +50,16 @@ input[class="search_bar"]::placeholder {
 }
 
 .round_button {
-    font-size: 1.5vw;
+    font-size: 1vw;
     margin-left: 1vw;
+    margin-right: 1vw;
     background: lightgray;
     border: none;
-    border-radius: 50%;
+    border-radius: 100%;
     justify-content: center;
     align-items: center;
-    width: 2.3vw;
-    height: 2.3vw;
+    width: 3.5vw;
+    height: 3.5vw;
 }
 
 
