@@ -1,5 +1,5 @@
 .main {
-    font-size: 20px;
+    font-size: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,19 +33,22 @@
 }
 
 .search_bar {
+    width: 50vw;
     margin-left: 1vw;
     border: none;
     width: 26.5vw;
     height: 2.3vw;
     background: lightgray;
     border-radius: 8.5px;
+    font-size: 1vw;
 }
 
 input[class="search_bar"]::placeholder {
-    padding-left: 10px;
+    padding-left: 1vw;
 }
 
 .round_button {
+    font-size: 1.5vw;
     margin-left: 1vw;
     background: lightgray;
     border: none;
@@ -128,4 +131,7 @@ ul {
         align-items: center;
     }
 
+    .refresh_geopos {
+
+    }
 }
