@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Weather site</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="main">
 <header>
     <div class="header">
         <h1>Weather Today</h1>
+        <button class="refresh_geopos">Обновить геолокацию</button>
     </div>
 </header>
-<div class="main">
 <main>
     <div class="main_city_cont">
         <div class="main_city_head">
@@ -27,12 +29,23 @@
             <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
         </ul>
     </div>
+    <form class="search">
+        <label>
+            <input class="search_bar" type="search" placeholder="Add new city" required>
+        </label>
+        <button class="search_add round_button" type="submit">
+            +
+        </button>
+    </form>
     <ul class="fav_cities">
         <li class="fav_city">
             <div class="fav_city_main">
                 <h3 class="fav_city_name">Something</h3>
                 <img class="weather_icon" src="cloudy.png">
                 <span class="fav_city_temp">5°C</span>
+                <button class="close_button round_button">
+                    &#xd7;
+                </button>
             </div>
             <ul class="city_info">
                 <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>

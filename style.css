@@ -1,13 +1,61 @@
-header {
-    display: grid;
-    justify-content: center;
-}
-
 .main {
+    font-size: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     flex-grow: 1;
+    min-width: 320px;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
+
+.header {
+    display: grid;
+    grid-column-gap: 30vw;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+.refresh_geopos {
+    padding: 10px;
+    background: lightgray;
+    border: none;
+    border-radius:15px;
+    justify-self: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1.5vw;
+    margin-bottom: 0.5vw;
+}
+
+.search_bar {
+    margin-left: 1vw;
+    border: none;
+    width: 26.5vw;
+    height: 2.3vw;
+    background: lightgray;
+    border-radius: 8.5px;
+}
+
+input[class="search_bar"]::placeholder {
+    padding-left: 10px;
+}
+
+.round_button {
+    margin-left: 1vw;
+    background: lightgray;
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 2.3vw;
+    height: 2.3vw;
+}
+
 
 li {
     list-style-type: none;
@@ -19,19 +67,25 @@ ul {
 }
 
 .weather_icon {
-    width: 50px;
+    width: 5vw;
+    height: 5vw;
 }
 
 .main_city_cont {
     display: grid;
-    grid-template-columns: repeat(1, minmax(800px, 1fr));
-    grid-column-gap: 50px;
+    grid-template-columns: repeat(2, minmax(35vw, 1fr));
+    grid-column-gap: 5vw;
     align-items: center;
 }
 
 .fav_city_main {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.fav_city_temp {
+    font-size: 3vw;
 }
 
 .city_info {
@@ -46,14 +100,32 @@ ul {
     grid-column-end: 5;
 
     background-color: aliceblue;
-    margin: 5px 5px;
-    padding: 5px 5px;
+    margin: 0.3vw 0.3vw;
+    padding: 0.3vw 0.3vw;
 }
 
 .fav_cities {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: minmax(min-content, max-content);
-    grid-column-gap: 50px;
+    grid-column-gap: 5vw;
     align-items: center;
+}
+
+@media (max-width: 768px) {
+    .fav_cities {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-auto-rows: minmax(min-content, max-content);
+        grid-column-gap: 5vw;
+        align-items: center;
+    }
+
+    .main_city_cont {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(30vw, 1fr));
+        grid-column-gap: 5vw;
+        align-items: center;
+    }
+
 }
