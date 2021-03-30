@@ -11,7 +11,7 @@
 <header>
     <div class="header">
         <h1>Weather Today</h1>
-        <button class="refresh_geopos">Обновить геолокацию</button>
+        <button class="refresh_geopos"><span>Обновить геолокацию</span></button>
     </div>
 </header>
 <main>
@@ -55,76 +55,25 @@
                 <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
             </ul>
         </li>
-        <li class="fav_city">
-            <div class="fav_city_main">
-                <h3 class="fav_city_name">Something</h3>
-                <img class="weather_icon" src="cloudy.png">
-                <span class="fav_city_temp">5°C</span>
-            </div>
-            <ul class="city_info">
-                <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
-                <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
-                <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
-                <li class="weather_data"><span>Humidity</span><span>100%</span></li>
-                <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
-            </ul>
-        </li>
-        <li class="fav_city">
-            <div class="fav_city_main">
-                <h3 class="fav_city_name">Something</h3>
-                <img class="weather_icon" src="cloudy.png">
-                <span class="fav_city_temp">5°C</span>
-            </div>
-            <ul class="city_info">
-                <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
-                <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
-                <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
-                <li class="weather_data"><span>Humidity</span><span>100%</span></li>
-                <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
-            </ul>
-        </li>
-        <li class="fav_city">
-            <div class="fav_city_main">
-                <h3 class="fav_city_name">Something</h3>
-                <img class="weather_icon" src="cloudy.png">
-                <span class="fav_city_temp">5°C</span>
-            </div>
-            <ul class="city_info">
-                <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
-                <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
-                <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
-                <li class="weather_data"><span>Humidity</span><span>100%</span></li>
-                <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
-            </ul>
-        </li>
-        <li class="fav_city">
-            <div class="fav_city_main">
-                <h3 class="fav_city_name">Something</h3>
-                <img class="weather_icon" src="cloudy.png">
-                <span class="fav_city_temp">5°C</span>
-            </div>
-            <ul class="city_info">
-                <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
-                <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
-                <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
-                <li class="weather_data"><span>Humidity</span><span>100%</span></li>
-                <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
-            </ul>
-        </li>
-        <li class="fav_city">
-            <div class="fav_city_main">
-                <h3 class="fav_city_name">Something</h3>
-                <img class="weather_icon" src="cloudy.png">
-                <span class="fav_city_temp">5°C</span>
-            </div>
-            <ul class="city_info">
-                <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
-                <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
-                <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
-                <li class="weather_data"><span>Humidity</span><span>100%</span></li>
-                <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
-            </ul>
-        </li>
+        <template id="fav_city_templ">
+            <li class="fav_city">
+                <div class="fav_city_main">
+                    <h3 class="fav_city_name">Something</h3>
+                    <img class="weather_icon" src="cloudy.png">
+                    <span class="fav_city_temp">5°C</span>
+                    <button class="close_button round_button">
+                        &#xd7;
+                    </button>
+                </div>
+                <ul class="city_info">
+                    <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
+                    <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
+                    <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
+                    <li class="weather_data"><span>Humidity</span><span>100%</span></li>
+                    <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
+                </ul>
+            </li>
+        </template>
     </ul>
 </main>
 </div>
