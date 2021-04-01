@@ -1,5 +1,5 @@
-API_KEY = '007542c018f342fcd5ca67d906e197e7';
-API_URL = 'api.openweathermap.org/data/2.5/weather';
+API_KEY = '007542c018f342fcd5ca67d906e197e7'
+API_URL = 'https://api.openweathermap.org/data/2.5/weather'
 
 function request(url) {
     return fetch(url).then(response => {
@@ -28,7 +28,6 @@ function loadCoordViaApi() {
     });
 }
 
-
 main_city = document.getElementsByClassName('main_city_cont')[0]
 
 async function updateCity (latitude, longitude) {
@@ -47,8 +46,7 @@ async function updateCity (latitude, longitude) {
 
     main_city.getElementsByClassName('main_city_name')[0].textContent = rec_city_name
     main_city.getElementsByClassName('main_city_temp')[0].innerHTML = `${Math.round(rec_temp)}°C`
-
-
+    main_city.getElementsByClassName('weather_icon')[0].src = `https://openweathermap.org/img/wn/${weather['weather'][0]['icon']}@4x.png`
 
     const weather_info = main_city.getElementsByClassName('city_info')[0];
     weather_info.getElementsByClassName('wind')[0].getElementsByClassName('weather_data_value')[0].textContent = `${rec_wind_speed} m/s, ${rec_wind_direct} deg`
@@ -56,10 +54,8 @@ async function updateCity (latitude, longitude) {
     weather_info.getElementsByClassName('pressure')[0].getElementsByClassName('weather_data_value')[0].textContent = `${rec_pressure}hpa`
     weather_info.getElementsByClassName('humidity')[0].getElementsByClassName('weather_data_value')[0].textContent = `${rec_humidity}%`
     weather_info.getElementsByClassName('location')[0].getElementsByClassName('weather_data_value')[0].textContent = `[${rec_latitude}, ${rec_longitude}]`
-
-
 }
 
-update_geo_button = document.getElementsByClassName('refresh_geopos')[0];
+update_geo_button = document.getElementsByClassName('refresh_geopos')[0]
 
 update_geo_button.addEventListener('click', function () {loadCoordViaApi()})
