@@ -136,7 +136,7 @@ ul {
     .refresh_geopos {
         width: 10vw;
         height: 10vw;
-        background: url("refresh.svg") no-repeat;
+        background: url("img/refresh.svg") no-repeat;
         justify-self: end;
     }
 
