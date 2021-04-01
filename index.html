@@ -22,14 +22,14 @@
             <span class="main_city_temp">5°C</span>
         </div>
         <ul class="city_info">
-            <li class="weather_data wind"><span>Wind</span> <span class = "weather_data_value">North 10m/s</span></li>
-            <li class="weather_data cloudiness"><span>Cloudiness</span> <span class = "weather_data_value">Cloudy</span></li>
-            <li class="weather_data pressure"><span>Pressure</span><span class = "weather_data_value">750mmHg</span></li>
-            <li class="weather_data humidity"><span>Humidity</span><span class = "weather_data_value">100%</span></li>
-            <li class="weather_data location"><span>Location</span><span class = "weather_data_value">[100, 100]</span></li>
+            <li class="weather_data wind"><span>Wind</span> <span class="weather_data_value">North 10m/s</span></li>
+            <li class="weather_data cloudiness"><span>Cloudiness</span> <span class="weather_data_value">Cloudy</span></li>
+            <li class="weather_data pressure"><span>Pressure</span><span class="weather_data_value">750mmHg</span></li>
+            <li class="weather_data humidity"><span>Humidity</span><span class="weather_data_value">100%</span></li>
+            <li class="weather_data location"><span>Location</span><span class="weather_data_value">[100, 100]</span></li>
         </ul>
     </div>
-    <form class="search">
+    <form name="search" class="search">
         <label>
             <input class="search_bar" type="search" placeholder="Add new city" required>
         </label>
@@ -38,23 +38,6 @@
         </button>
     </form>
     <ul class="fav_cities">
-        <li class="fav_city">
-            <div class="fav_city_main">
-                <h3 class="fav_city_name">Something</h3>
-                <img class="weather_icon" src="img/cloudy.png">
-                <span class="fav_city_temp">5°C</span>
-                <button class="close_button round_button">
-                    &#xd7;
-                </button>
-            </div>
-            <ul class="city_info">
-                <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
-                <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
-                <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
-                <li class="weather_data"><span>Humidity</span><span>100%</span></li>
-                <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
-            </ul>
-        </li>
         <template id="fav_city_templ">
             <li class="fav_city">
                 <div class="fav_city_main">
@@ -66,11 +49,11 @@
                     </button>
                 </div>
                 <ul class="city_info">
-                    <li class="weather_data"><span>Wind</span> <span>North 10m/s</span></li>
-                    <li class="weather_data"><span>Cloudiness</span> <span>Cloudy</span></li>
-                    <li class="weather_data"><span>Pressure</span><span>750mmHg</span></li>
-                    <li class="weather_data"><span>Humidity</span><span>100%</span></li>
-                    <li class="weather_data"><span>Location</span><span>[100, 100]</span></li>
+                    <li class="weather_data wind"><span>Wind</span> <span class="weather_data_value">North 10m/s</span></li>
+                    <li class="weather_data cloudiness"><span>Cloudiness</span> <span class="weather_data_value">Cloudy</span></li>
+                    <li class="weather_data pressure"><span>Pressure</span><span class="weather_data_value">750mmHg</span></li>
+                    <li class="weather_data humidity"><span>Humidity</span><span class="weather_data_value">100%</span></li>
+                    <li class="weather_data location"><span>Location</span><span class="weather_data_value">[100, 100]</span></li>
                 </ul>
             </li>
         </template>
