@@ -5,6 +5,8 @@ const main_city = document.getElementsByClassName('main_city_cont')[0]
 const add_button = document.forms['search']
 const fav_cities = document.getElementsByClassName('fav_cities')[0]
 
+const myStorage = window.localStorage
+
 function request(url) {
     return fetch(url).then(response => {
         return response.json();
@@ -34,9 +36,23 @@ function loadCoordViaApi() {
     });
 }
 
+async function loadLocal() {
+    const copy = {};
+    for (let key of Object.keys(myStorage)) {
+        copy[key] = myStorage.getItem(key);
+    }
+    myStorage.clear();
+
+    for (let key in copy) {
+        let tmp = document.createElement('input')
+        tmp.value = key
+        await addCity(tmp);
+    }
+}
+
+
 function updateCity (weather, city, class_reg) {
     let rec_city_name = weather['name']
-    alert(rec_city_name)
     let rec_temp = weather['main']['temp_min']
     let rec_wind_speed = weather['wind']['speed']
     let rec_wind_direct = weather['wind']['deg']
@@ -62,22 +78,65 @@ function updateCity (weather, city, class_reg) {
 async function addCity(city) {
     const template = document.getElementById('fav_city_templ')
     const favCityEl = document.importNode(template.content.firstElementChild, true)
-
+    favCityEl.id = `fav_${city.value}`
     fav_cities.appendChild(favCityEl)
 
     let weather = await getWeatherByName(city.value)
 
-    updateCity(weather, city, 'fav_city')
+    if (weather == null) {
+        alert('No ethernet connection!')
+        deleteCity(city.value)
+        return
+    }
+    if (weather['cod'] !== 200) {
+        alert('Incorrect city name or some information missing')
+        deleteCity(city.value)
+        return
+    }
+    if (myStorage.getItem(weather['name']) !== null) {
+        alert('Already added to the favourites')
+        deleteCity(city.value)
+        return
+    }
+
+    myStorage.setItem(weather['name'], city.value)
+
+    updateCity(weather, favCityEl, 'fav_city')
+}
+
+function deleteCity(cityId) {
+    const city = document.getElementById(`fav_${cityId}`);
+    city.remove();
 }
 
 update_geo_button = document.getElementsByClassName('refresh_geopos')[0]
 
 update_geo_button.addEventListener('click', function () {loadCoordViaApi()})
 
-add_button.addEventListener('submit', function (e) {
+add_button.addEventListener('submit', function (event) {
     const city = document.getElementsByClassName('search_bar')[0]
 
     addCity(city)
 
-    e.preventDefault()
+    event.preventDefault()
 })
+
+fav_cities.addEventListener('click', function (event) {
+    const cityId = event.target.closest('li').id.split('_')[1]
+    const cityName = event.target.closest('li').getElementsByClassName('fav_city_main')[0].textContent
+
+    deleteCity(cityId)
+    myStorage.removeItem(cityId)
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+    loadCoordViaApi()
+    loadLocal()
+
+})
+
+function initLoader() {
+    if (!main_city.classList.contains('loader')) {
+        main_city.classList.add('loader');
+    }
+}
