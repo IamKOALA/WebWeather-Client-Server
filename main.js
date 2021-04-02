@@ -120,6 +120,8 @@ add_button.addEventListener('submit', function (event) {
 
     addCity(city)
 
+    city.value = ''
+
     event.preventDefault()
 })
 
