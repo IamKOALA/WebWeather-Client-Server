@@ -73,6 +73,8 @@ function updateCity (weather, city, class_reg) {
     weather_info.getElementsByClassName('pressure')[0].getElementsByClassName('weather_data_value')[0].textContent = `${rec_pressure}hpa`
     weather_info.getElementsByClassName('humidity')[0].getElementsByClassName('weather_data_value')[0].textContent = `${rec_humidity}%`
     weather_info.getElementsByClassName('location')[0].getElementsByClassName('weather_data_value')[0].textContent = `[${rec_latitude}, ${rec_longitude}]`
+
+    remLoader(city)
 }
 
 async function addCity(city) {
@@ -132,11 +134,15 @@ fav_cities.addEventListener('click', function (event) {
 document.addEventListener('DOMContentLoaded', function () {
     loadCoordViaApi()
     loadLocal()
-
+    initLoader()
 })
 
 function initLoader() {
     if (!main_city.classList.contains('loader')) {
         main_city.classList.add('loader');
     }
+}
+
+function remLoader(city) {
+    city.classList.remove('loader');
 }

@@ -144,3 +144,26 @@ ul {
         display: none;
     }
 }
+
+.city_loader {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader .fav_city_main,
+.loader .city_info,
+.loader .main_city_head{
+    display: none;
+}
+
+.loader .city_loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 10vh;
+    margin-bottom: 1vh;
+    min-width: 280px;
+    width: 100%;
+}
