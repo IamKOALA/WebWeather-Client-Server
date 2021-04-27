@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "@databases/pg": "^5.0.0"
+  }
+}
