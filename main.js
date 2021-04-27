@@ -128,8 +128,8 @@ fav_cities.addEventListener('click', function (event) {
     const cityId = event.target.closest('li').id.split('_')[1]
     const cityName = event.target.closest('li').getElementsByClassName('fav_city_main')[0].textContent
 
-    deleteCity(cityId)
     myStorage.removeItem(cityId)
+    deleteCity(cityId)
 })
 
 document.addEventListener('DOMContentLoaded', function () {
