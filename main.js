@@ -78,30 +78,29 @@ function updateCity (weather, city, class_reg) {
 }
 
 async function addCity(city) {
+    const city_value = city.value
     const template = document.getElementById('fav_city_templ')
     const favCityEl = document.importNode(template.content.firstElementChild, true)
     favCityEl.id = `fav_${city.value}`
-    fav_cities.appendChild(favCityEl)
 
     let weather = await getWeatherByName(city.value)
 
     if (weather == null) {
         alert('No ethernet connection!')
-        deleteCity(city.value)
         return
     }
     if (weather['cod'] !== 200) {
         alert('Incorrect city name or some information missing')
-        deleteCity(city.value)
         return
     }
     if (myStorage.getItem(weather['name']) !== null) {
         alert('Already added to the favourites')
-        deleteCity(city.value)
         return
     }
 
-    myStorage.setItem(weather['name'], city.value)
+    fav_cities.appendChild(favCityEl)
+
+    myStorage.setItem(weather['name'], city_value)
 
     updateCity(weather, favCityEl, 'fav_city')
 }
