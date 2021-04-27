@@ -82,24 +82,34 @@ async function addCity(city) {
     const template = document.getElementById('fav_city_templ')
     const favCityEl = document.importNode(template.content.firstElementChild, true)
     favCityEl.id = `fav_${city.value}`
+    if (document.getElementById(`${favCityEl.id}`) !== null) {
+        alert('Already added to the favourites')
+        return
+    }
+    fav_cities.appendChild(favCityEl)
 
     let weather = await getWeatherByName(city.value)
 
     if (weather == null) {
         alert('No ethernet connection!')
+        remLoader(favCityEl)
+        deleteCity(city_value)
         return
     }
     if (weather['cod'] !== 200) {
         alert('Incorrect city name or some information missing')
+        remLoader(favCityEl)
+        deleteCity(city_value)
         return
     }
     if (myStorage.getItem(weather['name']) !== null) {
         alert('Already added to the favourites')
+        remLoader(favCityEl)
+        deleteCity(city_value)
         return
     }
 
-    fav_cities.appendChild(favCityEl)
-
+    remLoader(favCityEl)
     myStorage.setItem(weather['name'], city_value)
 
     updateCity(weather, favCityEl, 'fav_city')
