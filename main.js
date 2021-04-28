@@ -2,29 +2,40 @@ const main_city = document.getElementsByClassName('main_city_cont')[0]
 const add_button = document.forms['search']
 const fav_cities = document.getElementsByClassName('fav_cities')[0]
 
-function request(url) {
-    return fetch(url).then(response => {
-        return response.json();
-    }).catch(exception => {
-        console.warn(`Unable to fetch "${url}": ` + exception.message)
-    });
-}
+const host = 'http://localhost:13036'
 
 function getWeatherByCoords(latitude, longitude) {
-    const url = `${API_URL}?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
-    return request(url);
-}
-
-function getWeatherByName(city) {
     return new Promise(function (resolve, reject) {
-        let url = `http://localhost:13036/weather/city?q=${city}`;
+        let url = `${host}/weather/coordinates?lat=${latitude}&long=${longitude}`;
         let request = new XMLHttpRequest();
         request.responseType = 'json'
         request.open('GET', url, true);
         request.send();
         request.onload = function () {
             if (request.status === 200) {
-                console.log(request.response)
+                resolve(request.response)
+                console.log("success")
+            } else {
+                console.log("Error no such city")
+                resolve(request.response)
+            }
+        }
+        request.onerror = function () {
+            console.log("No connection")
+            resolve(null)
+        }
+    })
+}
+
+function getWeatherByName(city) {
+    return new Promise(function (resolve, reject) {
+        let url = `${host}/weather/city?q=${city}`;
+        let request = new XMLHttpRequest();
+        request.responseType = 'json'
+        request.open('GET', url, true);
+        request.send();
+        request.onload = function () {
+            if (request.status === 200) {
                 resolve(request.response)
             } else {
                 console.log("Error no such city")
@@ -102,7 +113,7 @@ async function addCity(city) {
     }
 
     let correct_city_name = weather['name']
-    let url = `http://localhost:13036/favourites?q=${correct_city_name}`;
+    let url = `${host}/favourites?q=${correct_city_name}`;
     let request = new XMLHttpRequest();
     request.responseType = 'json'
     request.open('POST', url, true);
@@ -172,32 +183,34 @@ add_button.addEventListener('submit', function (event) {
     event.preventDefault()
 })
 
-fav_cities.addEventListener('click', function (event) {
-    const cityId = event.target.closest('li').id.split('_')[1]
-    const cityName = event.target.closest('li').getElementsByClassName('fav_city_name')[0].textContent
-    console.log(cityName)
-    let url = `http://localhost:13036/favourites?q=${cityName}`;
-    let request = new XMLHttpRequest();
-    request.responseType = 'json'
-    request.open('DELETE', url, true);
-    request.send();
-    request.onload = function () {
-        if (request.status === 200) {
-            console.log(request.response)
-            deleteCity(cityId)
-        } else {
+document.addEventListener('click', function (event) {
+    if (event.target.className.match('close_button')) {
+        const cityId = event.target.closest('li').id.split('_')[1]
+        const cityName = event.target.closest('li').getElementsByClassName('fav_city_name')[0].textContent
+        console.log(cityName)
+        let url = `${host}/favourites?q=${cityName}`;
+        let request = new XMLHttpRequest();
+        request.responseType = 'json'
+        request.open('DELETE', url, true);
+        request.send();
+        request.onload = function () {
+            if (request.status === 200) {
+                console.log(request.response)
+                deleteCity(cityId)
+            } else {
+                alert('Connection error')
+            }
+        }
+        request.onerror = function () {
             alert('Connection error')
         }
-    }
-    request.onerror = function () {
-        alert('Connection error')
     }
 })
 
 document.addEventListener('DOMContentLoaded', function () {
     initLoader()
     loadCoordViaApi()
-    let url = `http://localhost:13036/favourites`;
+    let url = `${host}/favourites`;
     let request = new XMLHttpRequest();
     request.responseType = 'json';
     request.open('GET', url);

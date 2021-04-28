@@ -84,6 +84,26 @@ app.get('/weather/city', async function (req, res) {
     })
 })
 
+app.get('/weather/coordinates', async function (req, res) {
+    let url = `${API_URL}?lat=${req.query.lat}&lon=${req.query.long}&units=metric&appid=${API_KEY}`
+    fetch(url).then(
+        response => {
+            if (response.status === 200) {
+                response.json().then(
+                    data => res.json(data)
+                )
+            } else {
+                res.statusCode = 404
+                res.send()
+            }
+        }
+    ).catch((e) => {
+        console.log(e.message)
+        res.statusCode = 404
+        res.send()
+    })
+})
+
 function checkCity(city) {
     return new Promise(function (resolve, reject) {
         const query_sel = `SELECT count(*) FROM fav_cities WHERE city = '${city}'`
