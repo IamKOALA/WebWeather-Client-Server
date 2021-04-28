@@ -27,11 +27,13 @@ function getWeatherByName(city) {
                 console.log(request.response)
                 resolve(request.response)
             } else {
-                alert('Connection error')
+                console.log("Error no such city")
+                resolve(request.response)
             }
         }
         request.onerror = function () {
-            alert('Connection error')
+            console.log("No connection")
+            resolve(null)
         }
     })
 }
@@ -182,6 +184,7 @@ fav_cities.addEventListener('click', function (event) {
     request.onload = function () {
         if (request.status === 200) {
             console.log(request.response)
+            deleteCity(cityId)
         } else {
             alert('Connection error')
         }
@@ -189,7 +192,6 @@ fav_cities.addEventListener('click', function (event) {
     request.onerror = function () {
         alert('Connection error')
     }
-    deleteCity(cityId)
 })
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -38,7 +38,6 @@ app.get('/favourites', async function (req, res) {
 
 app.post('/favourites', async function (req, res) {
     let flag = await checkCity(req.query.q)
-    console.log(flag)
 
     if (flag) {
         const query = `INSERT INTO fav_cities (city) VALUES('${req.query.q}')`
@@ -57,7 +56,7 @@ app.post('/favourites', async function (req, res) {
 })
 
 app.delete('/favourites', async function (req, res) {
-    const query = `DELETE FROM fav_cities WHERE id in (SELECT id FROM fav_cities WHERE city = '${req.query.q}' LIMIT 1);`
+    const query = `DELETE FROM fav_cities WHERE id in (SELECT id FROM fav_cities WHERE city = '${req.query.q}');`
     client.query(query).then(
         data => {
             res.send(data)
@@ -89,7 +88,6 @@ function checkCity(city) {
     return new Promise(function (resolve, reject) {
         const query_sel = `SELECT count(*) FROM fav_cities WHERE city = '${city}'`
         client.query(query_sel, (err, res) => {
-            console.log(res['rows'][0]['count'])
             if (res['rows'][0]['count'] == 0) {
                 resolve(true)
             }
