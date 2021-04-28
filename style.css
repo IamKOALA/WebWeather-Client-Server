@@ -1,11 +1,15 @@
 .main {
-    font-size: 2vw;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
     margin-left: 10vw;
     margin-right: 10vw;
+}
+
+body {
+    margin-bottom: 100px;
 }
 
 .header {
@@ -23,7 +27,7 @@
     border: none;
     border-radius:2vw;
     justify-self: center;
-    font-size: 1vw;
+    font-size: 10px;
 }
 
 .search {
@@ -41,7 +45,7 @@
     height: 3vw;
     background: lightgray;
     border-radius: 8.5px;
-    font-size: 1vw;
+    font-size: 10px;
 }
 
 input[class="search_bar"]::placeholder {
@@ -49,7 +53,7 @@ input[class="search_bar"]::placeholder {
 }
 
 .round_button {
-    font-size: 1vw;
+    font-size: 10px;;
     margin-left: 1vw;
     margin-right: 1vw;
     background: lightgray;
@@ -90,7 +94,7 @@ ul {
 }
 
 .fav_city_temp {
-    font-size: 3vw;
+    font-size: 30px;
 }
 
 .city_info {
